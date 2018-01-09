@@ -170,7 +170,7 @@ class GmnxViewGraphic extends GmnxViewDecoration {
             .attr("y", this.rect.y)
             .attr("width", this.rect.width)
             .attr("height", this.rect.height)
-            .attr("fill", "blue")
+            .attr("fill", "#009900")
             .css("mix-blend-mode", "lighten");
     }
 
@@ -303,16 +303,17 @@ class GmnxPerformance {
         });
     }
 
-
-    play() {
-        this.prepare();
-
+    schedule() {
         if (!this.scheduled) {
           Tone.Transport.cancel(0);
           this.schedulePerformance();
           this.scheduleRegions();
           this.scheduled = true;
         }
+    }
+
+    play() {
+        this.prepare();
 
         Tone.Transport.seconds = 0;
         this.startTime = Tone.Transport.context.currentTime;
@@ -342,29 +343,56 @@ class GmnxPerformanceData extends GmnxPerformance {
         this.events.sort((a, b) => a.start - b.start);
 
         //create a synth and connect it to the master output (your speakers)
-        let synth = new Tone.PolySynth(32, Tone.Synth).toMaster();
+        this.synth = new Tone.PolySynth(32, Tone.Synth).toMaster();
 
         this.events.forEach(pe => {
             let viewGraphic;
             if (pe.view && pe.graphics) {
                 pe.viewGraphics = [];
                 pe.graphics.forEach(g => {
-                    pe.viewGraphics.push(new GmnxViewGraphic(this, {
+                    let viewGraphic = new GmnxViewGraphic(this, {
                         start: pe.start,
                         end: pe.start + pe.duration,
                         view: pe.view,
                         region: g
-                    }));
+                    });
+                    viewGraphic.svg.onclick = () => {
+                        this.synth.triggerAttackRelease(pe.frequency, 1, 0, 1);
+                    };
+                    pe.viewGraphics.push(viewGraphic);
                 });
             }
 
             Tone.Transport.schedule(time => {
-                synth.triggerAttackRelease(pe.frequency, pe.duration * this.timescale, time, pe.dynamics / 127);
-                if (pe.viewGraphics) {
-                    pe.viewGraphics.forEach(g => g.show());
-                }
+                this.synth.triggerAttackRelease(pe.frequency, pe.duration * this.timescale, time, pe.dynamics / 127);
             }, pe.start * this.timescale)
+
+            if (pe.viewGraphics) {
+                Tone.Transport.schedule(time => {
+                    pe.viewGraphics.forEach(g => {
+                        g.show();
+                        this.activeRegions.set(g, g);
+                    });
+                }, pe.start * this.timescale);
+                Tone.Transport.schedule(time => {
+                    pe.viewGraphics.forEach(g => {
+                        g.hide();
+                        this.activeRegions.delete(g);
+                    });
+                }, (pe.start + pe.duration) * this.timescale)
+            }
         });
+    }
+
+    start() {
+        super.start();
+    }
+
+    stop() {
+        super.stop();
+        if (this.synth) {
+            this.synth.releaseAll();
+        }
     }
 }
 
@@ -513,6 +541,10 @@ class GmnxViewer {
             promises.push(perfaudio.addMedia(this.base + $(media).attr('src')));
         });
 
-        return Promise.all(promises);
+        let bigPromise = Promise.all(promises);
+        bigPromise.then(() => {
+            this.performances.forEach(perf => perf.schedule());
+        });
+        return bigPromise;
     }
 }
