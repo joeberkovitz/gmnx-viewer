@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>GMNX Viewer</title>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <style>
+    </style>
+
+    <!-- UI dependencies -->
+    <script type="text/javascript" src="lib/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="lib/knockout-3.4.2.js"></script>
+    <script type="text/javascript" src="lib/Tone.js"></script>
+
+    <!-- GMNX viewer library -->
+    <script type="text/javascript" src="js/gmnx-viewer.js"></script>
+
+    <script>
+
+var viewer;
+
+var viewModel = {
+  ready: ko.observable(false),
+  performances: ko.observableArray()
+};
+
+class PerformanceModel {
+  constructor (perf) {
+    this.perf = perf;
+    this.playing = ko.observable(false);
+  }
+
+  play() {
+    this.perf.play();
+  }
+
+  stop() {
+    this.perf.stop();
+  }
+}
+function initialize() {
+    console.log("Initializing...");
+
+    ko.applyBindings(viewModel);
+
+    viewer = new GmnxViewer({
+        elementName: "viewerDiv"
+    });
+}
+
+function loadFile(src) {
+  viewModel.ready(false);
+
+  console.log("Loading...!");
+  viewer.load(src).then(() => {
+      console.log("...done!");
+
+      viewModel.performances([]);
+      viewer.performances.forEach(perf => {
+        viewModel.performances.push(new PerformanceModel(perf));
+      })
+      viewModel.ready(true);
+  }, 
+  reason => {
+      console.log("...error:", reason);
+  });
+}
+   
+function loadFaure() {
+  loadFile("examples/ApresUnReve/ApresUnReve-gmnx.xml");
+}
+
+function loadCantillation() {
+  loadFile("examples/Isaiah-40-27/cantillation-gmnx.xml");
+}
+
+$(() => { initialize(); })     
+
+    </script>
+</head>
+<body>
+    <div>
+      <button data-bind="click: loadFaure">Après Un Rêve (Faure)</button>
+      <button data-bind="click: loadCantillation">Jewish Cantillation</button>
+    </div>
+    <div data-bind="visible: viewModel.ready">
+      <div data-bind="foreach: viewModel.performances">
+        <button data-bind="click: play">play</button>
+        <button data-bind="click: stop">stop</button>
+      </div>
+    </div>
+    <div id="viewerDiv"></div>
+</body>
+</html>

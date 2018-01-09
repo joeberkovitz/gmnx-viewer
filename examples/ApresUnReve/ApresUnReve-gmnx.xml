@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<mnx>
+  <head>
+    <title>Apres Un Reve, Op. 7, No. 1</title>
+  </head>
+  <score>
+    <gmnx>
+      <score-view id="page1" view="ApresUnReve.svg">
+        <score-mapping graphics="n1" events="e1"/>
+        <score-mapping graphics="n2" events="e2"/>
+        <score-mapping graphics="n3" events="e3"/>
+        <score-mapping graphics="n4" events="e45"/>
+        <score-mapping graphics="s4" events="e45"/>
+        <score-mapping graphics="n5" events="e45"/>
+        <score-mapping graphics="n6" events="e6"/>
+        <score-mapping graphics="n7" events="e7"/>
+        <score-mapping graphics="n8" events="e8"/>
+        <score-mapping graphics="n9" events="e9"/>
+        <score-mapping graphics="n10" events="e10"/>
+        <score-mapping graphics="n11" events="e11"/>
+        <score-mapping graphics="n12" events="e12"/>
+      </score-view>
+
+      <performance-data>
+        <performance-tempo beat="/4" bpm="60"/>
+
+        <performance-mapping>
+          <performance-region start="0" end="0.75" view="page1" region="m1" cursor-start="left" cursor-end="right"/>
+          <performance-region start="0.75" end="1.5" view="page1" region="m2" cursor-start="left" cursor-end="right"/>
+          <performance-region start="1.5" end="2.25" view="page1" region="m3" cursor-start="left" cursor-end="right"/>
+          <performance-region start="2.25" end="3" view="page1" region="m4" cursor-start="left" cursor-end="right"/>
+          <performance-region start="3" end="3.75" view="page1" region="m5" cursor-start="left" cursor-end="right"/>
+          <performance-region start="3.75" end="4.5" view="page1" region="m6" cursor-start="left" cursor-end="right"/>
+          <performance-region start="4.5" end="5.25" view="page1" region="m7" cursor-start="left" cursor-end="right"/>
+          <performance-region start="5.25" end="6" view="page1" region="m8" cursor-start="left" cursor-end="right"/>
+        </performance-mapping>
+
+        <performance-part>
+          <performance-event id="e1" pitch="391.9954" start="0.7500" duration="0.2250" dynamics="95" view="page1" graphics="n1"/>
+          <performance-event id="e2" pitch="523.2511" start="1.0000" duration="0.2250" dynamics="101" view="page1" graphics="n2"/>
+          <performance-event id="e3" pitch="587.3295" start="1.2500" duration="0.2250" dynamics="118" view="page1" graphics="n3"/>
+          <performance-event id="e45" pitch="622.2540" start="1.5000" duration="0.3083" dynamics="127" view="page1" graphics="n4 s4 n5"/>
+          <performance-event id="e6" pitch="587.3295" start="1.8333" duration="0.0750" dynamics="127" view="page1" graphics="n6"/>
+          <performance-event id="e7" pitch="523.2511" start="1.9167" duration="0.0750" dynamics="127" view="page1" graphics="n7"/>
+          <performance-event id="e8" pitch="622.2540" start="2.0000" duration="0.0750" dynamics="127" view="page1" graphics="n8"/>
+          <performance-event id="e9" pitch="587.3295" start="2.0833" duration="0.0750" dynamics="127" view="page1" graphics="n9"/>
+          <performance-event id="e10" pitch="523.2511" start="2.1667" duration="0.0750" dynamics="127" view="page1" graphics="n10"/>
+          <performance-event id="e11" pitch="523.2511" start="2.2500" duration="0.4750" dynamics="127" view="page1" graphics="n11"/>
+          <performance-event id="e12" pitch="466.1638" start="2.7500" duration="0.2250" dynamics="98" view="page1" graphics="n12"/>
+          <performance-event pitch="554.3653" start="3.0000" duration="0.1125" dynamics="95"/>
+          <performance-event pitch="349.2282" start="3.1250" duration="0.1125" dynamics="95"/>
+          <performance-event pitch="554.3653" start="3.2500" duration="0.2250" dynamics="95"/>
+          <performance-event pitch="523.2511" start="3.5000" duration="0.1125" dynamics="95"/>
+          <performance-event pitch="493.8833" start="3.6250" duration="0.1125" dynamics="95"/>
+          <performance-event pitch="523.2511" start="3.7500" duration="0.3500" dynamics="95"/>
+          <performance-event pitch="523.2511" start="4.1250" duration="0.1125" dynamics="113"/>
+          <performance-event pitch="466.1638" start="4.2500" duration="0.1688" dynamics="119"/>
+          <performance-event pitch="415.3047" start="4.4375" duration="0.0563" dynamics="127"/>
+          <performance-event pitch="391.9954" start="4.5000" duration="0.3333" dynamics="127"/>
+          <performance-event pitch="415.3047" start="4.8333" duration="0.0833" dynamics="116"/>
+          <performance-event pitch="466.1638" start="4.9167" duration="0.0833" dynamics="111"/>
+          <performance-event pitch="415.3047" start="5.0000" duration="0.0833" dynamics="106"/>
+          <performance-event pitch="466.1638" start="5.0833" duration="0.0833" dynamics="101"/>
+          <performance-event pitch="523.2511" start="5.1667" duration="0.0750" dynamics="96"/>
+          <performance-event pitch="391.9954" start="5.2500" duration="0.7250" dynamics="95"/>
+       </performance-part>
+        <performance-part>
+          <performance-event pitch="261.6256" start="0.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="0.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="0.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="0.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="0.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="0.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="0.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="0.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="0.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="0.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="0.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="0.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="0.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="0.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="0.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="0.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="0.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="0.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="0.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="0.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="0.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="0.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="0.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="0.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="1.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="1.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="1.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="1.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="1.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="1.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="1.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="1.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="1.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="233.0819" start="1.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="1.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="1.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="1.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="233.0819" start="1.3750" duration="0.1125" dynamics="31"/>
+        </performance-part>
+        <performance-part>
+          <performance-event pitch="311.1270" start="1.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="1.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="220.0000" start="1.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="1.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="220.0000" start="1.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="1.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="1.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="1.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="1.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="220.0000" start="1.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="1.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="1.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="1.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="1.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="391.9954" start="1.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="220.0000" start="1.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="220.0000" start="2.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="2.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="2.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="2.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="311.1270" start="2.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="220.0000" start="2.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="2.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="2.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="2.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="2.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="2.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="2.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="2.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="2.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="2.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="2.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="2.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="2.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="2.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="2.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="2.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="2.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="2.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="2.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="2.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="2.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="2.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="2.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="2.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="2.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="2.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="2.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="3.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="277.1826" start="3.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="3.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="3.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="277.1826" start="3.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="3.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="3.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="3.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="277.1826" start="3.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="277.1826" start="3.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="3.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="3.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="195.9977" start="3.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="329.6276" start="3.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="277.1826" start="3.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="329.6276" start="3.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="277.1826" start="3.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="195.9977" start="3.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="3.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="3.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="329.6276" start="3.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="329.6276" start="3.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="3.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="3.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="4.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="4.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="329.6276" start="4.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="329.6276" start="4.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="4.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="4.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="4.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="4.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="4.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="4.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="349.2282" start="4.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="4.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="4.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="246.9417" start="4.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="195.9977" start="4.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="174.6141" start="4.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="4.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="246.9417" start="4.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="195.9977" start="4.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="174.6141" start="4.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="195.9977" start="4.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="4.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="246.9417" start="4.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="174.6141" start="4.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="195.9977" start="4.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="4.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="246.9417" start="4.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="174.6141" start="4.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="5.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="5.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="5.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="174.6141" start="5.0000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="174.6141" start="5.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="5.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="207.6523" start="5.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="261.6256" start="5.1250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="195.9977" start="5.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="174.6141" start="5.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="5.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="246.9417" start="5.2500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="174.6141" start="5.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="195.9977" start="5.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="246.9417" start="5.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="5.3750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="195.9977" start="5.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="5.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="174.6141" start="5.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="246.9417" start="5.5000" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="174.6141" start="5.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="5.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="246.9417" start="5.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="195.9977" start="5.6250" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="5.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="174.6141" start="5.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="195.9977" start="5.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="246.9417" start="5.7500" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="174.6141" start="5.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="246.9417" start="5.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="195.9977" start="5.8750" duration="0.1125" dynamics="31"/>
+          <performance-event pitch="293.6648" start="5.8750" duration="0.1125" dynamics="31"/>
+        </performance-part>
+        <performance-part>
+          <performance-event pitch="43.6535" start="1.5000" duration="0.7250" dynamics="95"/>
+          <performance-event pitch="87.3071" start="1.5000" duration="0.7250" dynamics="95"/>
+          <performance-event pitch="58.2705" start="2.2500" duration="0.7250" dynamics="95"/>
+          <performance-event pitch="116.5409" start="2.2500" duration="0.7250" dynamics="95"/>
+          <performance-event pitch="77.7817" start="3.0000" duration="0.7250" dynamics="95"/>
+          <performance-event pitch="38.8909" start="3.0000" duration="0.7250" dynamics="95"/>
+          <performance-event pitch="51.9131" start="3.7500" duration="0.4750" dynamics="95"/>
+          <performance-event pitch="103.8262" start="3.7500" duration="0.4750" dynamics="95"/>
+          <performance-event pitch="73.4162" start="4.2500" duration="0.2250" dynamics="95"/>
+          <performance-event pitch="36.7081" start="4.2500" duration="0.2250" dynamics="95"/>
+          <performance-event pitch="48.9994" start="4.5000" duration="1.4750" dynamics="95"/>
+          <performance-event pitch="97.9989" start="4.5000" duration="1.4750" dynamics="95"/>
+        </performance-part>
+      </performance-data>
+    </gmnx>
+  </score>
+</mnx>

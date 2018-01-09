@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<mnx>
+  <head>
+    <title>Isaiah 40:27</title>
+  </head>
+  <score>
+    <gmnx>
+      <score-view id="page1" view="cantillation.svg"/>
+
+      <performance-audio>
+
+        <performance-audio-media src="cantillation.ogg"/>
+
+        <performance-mapping>
+          <performance-region start="1.3" end="4.5" view="page1" region="Verse1"/>
+          <performance-region start="4.7" end="8.4" view="page1" region="Verse2"/>
+          <performance-region start="8.4" end="12.4" view="page1" region="Verse3"/>
+          <performance-region start="12.5" end="17.2" view="page1" region="Verse4" cursor-start="right" cursor-end="left"/>
+        </performance-mapping>
+      </performance-audio>
+    </gmnx>
+  </score>
+</mnx>
