@@ -95,12 +95,25 @@ $(() => { initialize(); })
     <h2>GMNX Viewer</h2>
     <div>(on GitHub at: <a href="https://github.com/joeberkovitz/gmnx-viewer">gmnx-viewer</a>)</div>
     <hr/>
-    <div>
+    <div style="font-size: 12px;">
         Examples:
         <ul>
-            <li><a href="#" data-bind="click: loadFaure">Après Un Rêve (Faure)</a></li>
-            <li><a href="#" data-bind="click: loadCantillation">Jewish Cantillation</a></li>
-            <li><a href="#" data-bind="click: loadLutoslawski">Lutoslawski Symphony No. 2</a></li>
+            <li><a href="#" data-bind="click: loadFaure">Après Un Rêve (Faure)</a>: CWMN example with performance data.
+                Measures are mapped to time ranges with cursor motion.
+                The first few measures of the vocal line are also mapped at the
+                level of individual notes and events (click notes to play).
+            </li>
+            <li>
+                <a href="#" data-bind="click: loadCantillation">Jewish Cantillation</a>:
+                Non-CWMN, non-European example with audio media and inline SVG. Time range highlighting is employed
+                instead of cursor motion, except for the last verse which shows right-to-left motion.
+            </li>
+            <li>
+                <a href="#" data-bind="click: loadLutoslawski">Symphony No. 2 (Lutosławski)</a>:
+                This 20th century non-CWMN example employs aleatoric techniques and shows the need for flexibility in mapping
+                regions to time or events. The parts progress and repeat in an unsynchronized
+                fashion, and visual regions are played multiple times at differing speeds.
+            </li>
         </ul>
     </div>
     <hr/>

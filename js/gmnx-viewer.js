@@ -423,8 +423,10 @@ class GmnxPerformanceData extends GmnxPerformance {
                         view: pe.view,
                         region: g
                     });
-                    viewGraphic.svg.onclick = () => {
+                    viewGraphic.svg.onmousedown = () => {
                         this.synth.triggerAttackRelease(pe.frequency, 1, 0, 1);
+                        pe.viewGraphics.forEach(vg => vg.show());
+                        setTimeout(() => pe.viewGraphics.forEach(vg => vg.hide()), 500);
                     };
                     pe.viewGraphics.push(viewGraphic);
                 });
