@@ -6,6 +6,9 @@
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
     <style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
     </style>
 
     <!-- UI dependencies -->
@@ -60,6 +63,7 @@ function loadFile(src) {
       viewer.performances.forEach(perf => {
         viewModel.performances.push(new PerformanceModel(perf));
       })
+      viewModel.sourceFile = src;
       viewModel.ready(true);
   }, 
   reason => {
@@ -67,6 +71,10 @@ function loadFile(src) {
   });
 }
    
+function viewSource() {
+    window.open(viewModel.sourceFile, "_blank");
+}
+
 function loadFaure() {
   loadFile("examples/ApresUnReve/ApresUnReve-gmnx.xml");
 }
@@ -84,15 +92,21 @@ $(() => { initialize(); })
     </script>
 </head>
 <body>
+    <h1>GMNX Viewer</h1>
+    <h2>Load Examples:</h2>
     <div>
-      <button data-bind="click: loadFaure">Après Un Rêve (Faure)</button>
-      <button data-bind="click: loadCantillation">Jewish Cantillation</button>
-      <button data-bind="click: loadLutoslawski">Lutoslawski Symphony No. 2</button>
+        <ul>
+            <li><a href="#" data-bind="click: loadFaure">Après Un Rêve (Faure)</a></li>
+            <li><a href="#" data-bind="click: loadCantillation">Jewish Cantillation</a></li>
+            <li><a href="#" data-bind="click: loadLutoslawski">Lutoslawski Symphony No. 2</a></li>
+        </ul>
     </div>
+    <hr/>
     <div data-bind="visible: viewModel.ready">
       <div data-bind="foreach: viewModel.performances">
-        <button data-bind="click: play">play</button>
-        <button data-bind="click: stop">stop</button>
+        <button data-bind="click: play">Play</button>
+        <button data-bind="click: stop">Stop</button>
+        <button data-bind="click: viewSource">View GMNX</button>
       </div>
     </div>
     <div id="viewerDiv"></div>
