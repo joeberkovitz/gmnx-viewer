@@ -1,7 +1,37 @@
-// Encapsulates the view of GMNX content
+// Copyright 2018, Risible LLC.
 
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//    You may obtain a copy of the License at
+
+//        http://www.apache.org/licenses/LICENSE-2.0
+
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
+
+// gmnx-viewer.js:
+//
+// A simple viewing library for GMNX content.
+//
+// Currently does not support:
+//    - any differentiation between synthesized instruments
+//    - a concept of separate parts
+//    - more than one page view of SVG
+//    - view regions that are not based on existing element IDs
+//    - highlighting of graphical symbols that are not black-on-white
+//    - automatic scrolling for visibility
+//
+// See https://w3c.github.io/mnx/specification/ for details on GMNX.
+
+
+// SVG XML namespace constant
 const svgNS = 'http://www.w3.org/2000/svg';
 
+
+// Rational number class encapsulating a separate, integral numerator and denominator.
 class Rational {
     constructor(num, den) {
         this.numerator = num;
@@ -13,7 +43,9 @@ class Rational {
     }
 }
 
+// Assorted utilities for parsing, math, data manipulation.
 class MnxUtils {
+    // Parse a rational number as a fraction
     static parseRational(str) {
         let m = str.match(/^(-?\d+)\/(\d+)$/);
         if (m) {
@@ -21,11 +53,13 @@ class MnxUtils {
         }
     }
 
+    // Returns true if the given number is an exact power of 2.
     static isPowerOf2(number) {
         let ln2 = Math.log(number) / Math.log(2);
         return (ln2 - Math.floor(ln2)) == 0;
     }
 
+    // Parse an MNX note value quantity, returning a rational number.
     static parseNoteValueQuantity(str) {
         let m = str.match(/^(\d*)([\*\/])(\d+)([d]*)$/);
         if (m) {
@@ -54,15 +88,15 @@ class MnxUtils {
     }
 }
 
-// Represents a view of an SVG page in a score. The file is loaded into an
-// <iframe> in order to sandbox its ID namespace. The loading must take place
+// Represents a view of a single SVG page in a score. The file is loaded into an
+// <iframe> in order to sandbox its content and ID namespace. The loading must take place
 // via AJAX into a blank frame, giving the iframe document the same origin as
 // the source document.
 
 class GmnxView {
 
     constructor(element) {
-        // DOM element used for display
+        // build the <iframe> DOM element used for display
         this.element$ = $(element);
 
         this.element$.empty();
@@ -76,6 +110,7 @@ class GmnxView {
         else if (iframe.contentWindow)
             this.frameDoc = iframe.contentWindow.document;
 
+        // Place some boilerplate HTML into the iframe, including a <div> where the SVG will live.
         this.frameDoc.open();
         this.frameDoc.write('<html><head></head><body><div id="content"></div></body></html>');
         this.frameDoc.close();
@@ -105,13 +140,16 @@ class GmnxView {
         return this.frameDoc.getElementById(id);
     }
 
+    // Create a naked SVG element in the proper namespace with a given element name. The element
+    // is not yet placed in the DOM, but belongs to the document shown in the iFrame.
     createSvgElement(name) {
         return this.frameDoc.createElementNS(svgNS, name);
     }
 }
 
 // Represents a decoration within a GmnxView that can be displayed and/or hidden.
-
+// Decorations have their own independent SVG element spliced into the view's DOM,
+// whose geometry is based on the bounding box of an existing SVG element in the score.
 class GmnxViewDecoration {
     constructor(performance, region) {
         this.performance = performance;
@@ -123,10 +161,12 @@ class GmnxViewDecoration {
         this.end = region.end;
     }
 
+    // Return the SVG element being decorated.
     get svg() {
         return this.view.getSvgElement(this.elementId);
     }
 
+    // Display this decoration, adding it to the DOM if necessary.
     show() {
         if (!this.highlightSvg$) {
            this.highlightSvg$ = this.create();
@@ -140,10 +180,7 @@ class GmnxViewDecoration {
         return this;
     }
 
-    create() {
-        // Build the SVG element for this decoration
-    }
-
+    // Hide this decoration and remove it from the DOM.
     hide() {
         if (this.highlighted) {
             this.highlightSvg$.remove();
@@ -152,9 +189,14 @@ class GmnxViewDecoration {
 
         return this;
     }
+
+    // Abstract method which creates the SVG for the decoration
+    create() {
+    }
 }
 
 // Represents a region of the view which can be highlighted or in which a cursor may be displayed.
+// Displays as a transparent rectangle.
 class GmnxViewRegion extends GmnxViewDecoration {
     create() {
         return $(this.view.createSvgElement("rect"))
@@ -168,6 +210,9 @@ class GmnxViewRegion extends GmnxViewDecoration {
 
 }
 
+// Represents a graphical symbol in the view which can be highlighted.
+// Displays as a rectangle which lightens colors in the score,
+// leaving white alone but changing black to a highlight color.
 class GmnxViewGraphic extends GmnxViewDecoration {
     create() {
         return $(this.view.createSvgElement("rect"))
@@ -181,6 +226,8 @@ class GmnxViewGraphic extends GmnxViewDecoration {
 
 }
 
+// Represents a line-segment cursor which progresses from a starting pair of endpoints
+// to an ending pair of endpoints.
 class GmnxViewCursor extends GmnxViewDecoration {
     constructor(performance, region) {
         super(performance, region);
@@ -192,6 +239,7 @@ class GmnxViewCursor extends GmnxViewDecoration {
         }
     }
 
+    // Determine the endpoints of a cursor start/end.
     cursorFromEdge(str) {
       switch (str) {
         case "left":
@@ -214,6 +262,11 @@ class GmnxViewCursor extends GmnxViewDecoration {
             x1: this.rect.x,                   y1: this.rect.y + this.rect.height,
             x2: this.rect.x + this.rect.width, y2: this.rect.y + this.rect.height
           };
+        default:
+          let coords = str.split(/\s+/).map(num => Number.parseInt(num));
+          return {
+            x1: coords[0], y1: coords[1], x2: coords[2], y2: coords[3]
+          };
       }
     }
     
@@ -232,6 +285,8 @@ class GmnxViewCursor extends GmnxViewDecoration {
             .attr("x2", 0)
             .attr("y2", 0);
 
+        // We need to periodically wake up and redisplay the cursor
+        // as the Transport time progresses.
         if (this.interval === undefined) {
             this.interval = setInterval(() => {
               let time = Tone.Transport.seconds / this.performance.timescale;
@@ -259,6 +314,7 @@ class GmnxViewCursor extends GmnxViewDecoration {
     }
 }
 
+// Represents an abstract performance, based on either audio media or on explicit performance data.
 class GmnxPerformance {
     constructor(viewer) {
         this.viewer = viewer;
@@ -275,6 +331,7 @@ class GmnxPerformance {
         this.regions.push({start, end, view, region, cursorStart, cursorEnd});
     }
 
+    // Schedule the highlighting of all regions declared for this performance.
     scheduleRegions() {
         this.regions.forEach(pr => {
             let vr;
@@ -295,6 +352,8 @@ class GmnxPerformance {
         });
     }
 
+    // Prepare a performance by scheduling all of its elements in advance. This is only done once
+    // for a given performance.
     prepare() {
         if (!this.scheduled) {
             this.tempos.sort((a, b) => a.start - b.start);
@@ -313,6 +372,7 @@ class GmnxPerformance {
         }
     }
 
+    // Initiate playback of this performance.
     play() {
         this.stop();
 
@@ -321,6 +381,7 @@ class GmnxPerformance {
         Tone.Transport.start(this.startTime + 0.1);
     }
 
+    // Stop playback of this performance.
     stop() {
       Tone.Transport.stop();
       this.activeRegions.forEach(vr => {
@@ -330,6 +391,7 @@ class GmnxPerformance {
     }
 }
 
+// Represents a performance data element in a GMNX score.
 class GmnxPerformanceData extends GmnxPerformance {
     constructor(viewer) {
       super(viewer);
@@ -343,12 +405,16 @@ class GmnxPerformanceData extends GmnxPerformance {
     schedulePerformance() {
         this.events.sort((a, b) => a.start - b.start);
 
-        //create a synth and connect it to the master output (your speakers)
+        //create a synth and connect it to the master output
         this.synth = new Tone.PolySynth(32, Tone.Synth).toMaster();
 
+        // Process all events in the performance
         this.events.forEach(pe => {
             let viewGraphic;
             if (pe.view && pe.graphics) {
+                // A set of graphics have been declared for this event,
+                // so create GmnxViewGraphics to handle their highlighting
+                // and also interact with the user to permit single-shot playback on tap.
                 pe.viewGraphics = [];
                 pe.graphics.forEach(g => {
                     let viewGraphic = new GmnxViewGraphic(this, {
@@ -364,10 +430,12 @@ class GmnxPerformanceData extends GmnxPerformance {
                 });
             }
 
+            // Schedule the playback of this event.
             Tone.Transport.schedule(time => {
                 this.synth.triggerAttackRelease(pe.frequency, pe.duration * this.timescale, time, pe.dynamics / 127);
             }, pe.start * this.timescale)
 
+            // Schedule the view graphics for showing and hiding, if any exist.
             if (pe.viewGraphics) {
                 Tone.Transport.schedule(time => {
                     pe.viewGraphics.forEach(g => {
@@ -441,6 +509,7 @@ class GmnxViewer {
         this.element = document.getElementById(options.elementName);
     }
 
+    // Load a GMNX file from a URL, returning a Promise that resolves when the file is loaded.
     load(url) {
         if (url.indexOf('/') >= 0) {
             this.base = url.replace(/\/[^\/]+$/, '/');            
@@ -464,6 +533,7 @@ class GmnxViewer {
         });
     }
 
+    // Parse all tempos in a given performance.
     parseTempos(perfElement, performance) {
         $(perfElement).find('performance-tempo').each((index, pt) => {
             let start = Number.parseFloat($(pt).attr('start')) || 0.0;
@@ -473,6 +543,7 @@ class GmnxViewer {
         });
     }
 
+    // Parse all regions in a given performance.
     parseRegions(perfElement, performance) {
         $(perfElement).find('performance-region').each((index, pr) => {
             let start = Number.parseFloat($(pr).attr('start'));
@@ -488,14 +559,19 @@ class GmnxViewer {
     parse(xml) {
         this.views = new Map();
 
+        // HACK: we just find the first <gmnx> element in the file and parse it.
         let gmnx = $(xml).find('gmnx').first();
         let promises = [];
 
+        // Parse each <score-view> element.
         let scoreViews = gmnx.find('score-view');
         scoreViews.each((index, sv) => {
+            // Construct a GmnxView for this view and put it in our map of views.
             let view = new GmnxView(this.element);
             this.views.set($(sv).attr('id'), view);
 
+            // Load the contents of the view if not inline, and add to our list of promises
+            // relating to loading.
             let viewUrl = $(sv).attr('view');
             if (viewUrl) {
                 let viewPromise = view.display(this.base + viewUrl);
@@ -507,11 +583,12 @@ class GmnxViewer {
                 promises.push(viewPromise);
             }
             else {
-                // SVG is inline
+                // SVG is inline, just load it immediately as a string.
                 view.load(new XMLSerializer().serializeToString($(sv).find('svg')[0]));
             }
         });
 
+        // Parse all <performance-data> elements.
         let scoreData = gmnx.find('performance-data');
         this.performances = [];
         scoreData.each((index, pd) => {
@@ -549,10 +626,15 @@ class GmnxViewer {
             promises.push(perfaudio.addMedia(this.base + $(media).attr('src')));
         });
 
+        // Return a Promise that resolves when everything has been loaded.
         let bigPromise = Promise.all(promises);
+
+        // After the loading of everything, we can schedule all performances knowing that
+        // their SVG is present.
         bigPromise.then(() => {
             this.performances.forEach(perf => perf.prepare());
         });
+
         return bigPromise;
     }
 }
