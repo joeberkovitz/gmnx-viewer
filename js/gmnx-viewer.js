@@ -90,9 +90,14 @@ class GmnxView {
             dataType: 'text',
         });
         xhr.then(data => {
-            this.frameDoc.getElementById("content").innerHTML = data;
+            this.load(data);
         });
         return xhr;
+    }
+
+    // Load an SVG DOM from a string
+    load(data) {
+        this.frameDoc.getElementById("content").innerHTML = data;
     }
 
     // Get an SVG element by ID within the DOM
@@ -491,13 +496,20 @@ class GmnxViewer {
             let view = new GmnxView(this.element);
             this.views.set($(sv).attr('id'), view);
 
-            let viewPromise = view.display(this.base + $(sv).attr('view'));
-            viewPromise.then(() => {
-               $(sv).find('score-mapping').each((index, sm) => {
-                  // TODO: process semantic score mappings here                  
-               });
-            })
-            promises.push(viewPromise);
+            let viewUrl = $(sv).attr('view');
+            if (viewUrl) {
+                let viewPromise = view.display(this.base + viewUrl);
+                viewPromise.then(() => {
+                   $(sv).find('score-mapping').each((index, sm) => {
+                      // TODO: process semantic score mappings here                  
+                   });
+                })
+                promises.push(viewPromise);
+            }
+            else {
+                // SVG is inline
+                view.load(new XMLSerializer().serializeToString($(sv).find('svg')[0]));
+            }
         });
 
         let scoreData = gmnx.find('performance-data');
