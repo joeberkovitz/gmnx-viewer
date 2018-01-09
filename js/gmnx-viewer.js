@@ -270,19 +270,6 @@ class GmnxPerformance {
         this.regions.push({start, end, view, region, cursorStart, cursorEnd});
     }
 
-    prepare() {
-        this.tempos.sort((a, b) => a.start - b.start);
-
-        if (this.tempos.length == 0) {
-          this.addTempo(0, 1);
-        }
-
-        this.stop();
-
-        this.timescale = this.tempos[0].unitSeconds;
-        Tone.Transport.bpm.value = 60;
-    }
-
     scheduleRegions() {
         this.regions.forEach(pr => {
             let vr;
@@ -303,17 +290,26 @@ class GmnxPerformance {
         });
     }
 
-    schedule() {
+    prepare() {
         if (!this.scheduled) {
-          Tone.Transport.cancel(0);
-          this.schedulePerformance();
-          this.scheduleRegions();
-          this.scheduled = true;
+            this.tempos.sort((a, b) => a.start - b.start);
+
+            if (this.tempos.length == 0) {
+              this.addTempo(0, 1);
+            }
+
+            this.timescale = this.tempos[0].unitSeconds;
+            Tone.Transport.bpm.value = 60;
+
+            Tone.Transport.cancel(0);
+            this.schedulePerformance();
+            this.scheduleRegions();
+            this.scheduled = true;
         }
     }
 
     play() {
-        this.prepare();
+        this.stop();
 
         Tone.Transport.seconds = 0;
         this.startTime = Tone.Transport.context.currentTime;
@@ -543,7 +539,7 @@ class GmnxViewer {
 
         let bigPromise = Promise.all(promises);
         bigPromise.then(() => {
-            this.performances.forEach(perf => perf.schedule());
+            this.performances.forEach(perf => perf.prepare());
         });
         return bigPromise;
     }

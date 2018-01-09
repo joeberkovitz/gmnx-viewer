@@ -5,21 +5,7 @@
   </head>
   <score>
     <gmnx>
-      <score-view id="page1" view="ApresUnReve.svg">
-        <score-mapping graphics="n1" events="e1"/>
-        <score-mapping graphics="n2" events="e2"/>
-        <score-mapping graphics="n3" events="e3"/>
-        <score-mapping graphics="n4" events="e45"/>
-        <score-mapping graphics="s4" events="e45"/>
-        <score-mapping graphics="n5" events="e45"/>
-        <score-mapping graphics="n6" events="e6"/>
-        <score-mapping graphics="n7" events="e7"/>
-        <score-mapping graphics="n8" events="e8"/>
-        <score-mapping graphics="n9" events="e9"/>
-        <score-mapping graphics="n10" events="e10"/>
-        <score-mapping graphics="n11" events="e11"/>
-        <score-mapping graphics="n12" events="e12"/>
-      </score-view>
+      <score-view id="page1" view="ApresUnReve.svg"/>
 
       <performance-data>
         <performance-tempo beat="/4" bpm="60"/>
