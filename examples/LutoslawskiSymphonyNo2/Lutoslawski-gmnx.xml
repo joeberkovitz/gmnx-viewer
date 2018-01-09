@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<mnx>
+  <head>
+    <title>Isaiah 40:27</title>
+  </head>
+  <score>
+    <gmnx>
+      <score-view id="page1" view="Lutoslawski.svg"/>
+
+      <performance-audio>
+        <performance-audio-media src="Lutoslawski.ogg"/>
+
+        <performance-mapping>
+          <performance-region start="0.3" end="4.3" view="page1" region="m1"/>
+          <performance-region start="4.4" end="8" view="page1" region="m2"/>
+          <performance-region start="8" end="12" view="page1" region="m3"/>
+          <performance-region start="8" end="12" view="page1" region="m4"/>
+          <performance-region start="12" end="14.2" view="page1" region="m5"/>
+          <performance-region start="14.2" end="17" view="page1" region="m6"/>
+          <performance-region start="17" end="22.6" view="page1" region="m5"/>
+          <performance-region start="23" end="25" view="page1" region="m6"/>
+          <performance-region start="0.3" end="6.8" view="page1" region="m7"/>
+          <performance-region start="6.8" end="11.0" view="page1" region="m8"/>
+          <performance-region start="11.0" end="21" view="page1" region="m9"/>
+          <performance-region start="11.0" end="21" view="page1" region="m10"/>
+          <performance-region start="21" end="24" view="page1" region="m11"/>
+          <performance-region start="24" end="28" view="page1" region="m9"/>
+          <performance-region start="24" end="28" view="page1" region="m10"/>
+          <performance-region start="28" end="30" view="page1" region="m11"/>
+          <performance-region start="0" end="6.5" view="page1" region="m12"/>
+          <performance-region start="6.5" end="15" view="page1" region="m13"/>
+          <performance-region start="15" end="18" view="page1" region="m14"/>
+          <performance-region start="18" end="28" view="page1" region="m15"/>
+        </performance-mapping>
+      </performance-audio>
+    </gmnx>
+  </score>
+</mnx>

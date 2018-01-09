@@ -75,6 +75,10 @@ function loadCantillation() {
   loadFile("examples/Isaiah-40-27/cantillation-gmnx.xml");
 }
 
+function loadLutoslawski() {
+  loadFile("examples/LutoslawskiSymphonyNo2/Lutoslawski-gmnx.xml");
+}
+
 $(() => { initialize(); })     
 
     </script>
@@ -83,6 +87,7 @@ $(() => { initialize(); })
     <div>
       <button data-bind="click: loadFaure">Après Un Rêve (Faure)</button>
       <button data-bind="click: loadCantillation">Jewish Cantillation</button>
+      <button data-bind="click: loadLutoslawski">Lutoslawski Symphony No. 2</button>
     </div>
     <div data-bind="visible: viewModel.ready">
       <div data-bind="foreach: viewModel.performances">
