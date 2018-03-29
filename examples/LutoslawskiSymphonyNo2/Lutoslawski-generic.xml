@@ -4,7 +4,7 @@
     <title>Lutoslawski Symphony No. 2 (excerpt)</title>
   </head>
   <score>
-    <gmnx>
+    <mnx-generic>
       <score-view id="page1" view="Lutoslawski.svg"/>
 
       <performance-audio>
@@ -33,6 +33,6 @@
           <performance-region start="18" end="28" view="page1" region="m15"/>
         </performance-mapping>
       </performance-audio>
-    </gmnx>
+    </mnx-generic>
   </score>
 </mnx>

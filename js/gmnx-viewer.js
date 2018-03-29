@@ -561,8 +561,8 @@ class GmnxViewer {
     parse(xml) {
         this.views = new Map();
 
-        // HACK: we just find the first <gmnx> element in the file and parse it.
-        let gmnx = $(xml).find('gmnx').first();
+        // HACK: we just find the first <mnx-generic> element in the file and parse it.
+        let gmnx = $(xml).find('mnx-generic').first();
         let promises = [];
 
         // Parse each <score-view> element.

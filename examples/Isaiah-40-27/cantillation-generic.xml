@@ -4,7 +4,7 @@
     <title>Isaiah 40:27</title>
   </head>
   <score>
-    <gmnx>
+    <mnx-generic>
       <performance-audio>
 
         <performance-audio-media src="cantillation.ogg"/>
@@ -1043,6 +1043,6 @@
       </g>
       </svg>
     </score-view>
-    </gmnx>
+    </mnx-generic>
   </score>
 </mnx>

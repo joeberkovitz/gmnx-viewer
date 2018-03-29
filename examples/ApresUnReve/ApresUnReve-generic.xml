@@ -9,7 +9,7 @@
          Element IDs in the CWMNX score are referenced in GMNX <score-mapping> elements.
          Only the first four measures of the vocal part are treated this way, in this example.  -->
 
-    <cwmnx profile="standard">
+    <mnx-common profile="standard">
       <!-- Global score structure and directions -->
       <global>
         <measure number="1">
@@ -601,12 +601,12 @@
           </sequence>
         </measure>
       </part>
-    </cwmnx>
+    </mnx-common>
 
     <!-- The GMNX section of the file describes one graphic instantiation of the score.
          Note that multiple instantiations can be included in the document, without conflict. -->
 
-    <gmnx>
+    <mnx-generic>
       <!-- The following <score-view> element references an external SVG file. There is no
            non-graphical information in ApresUnReve.svg, which was exported from Adobe Illustrator
            without modification.  The hierarchical structure of the SVG file is determined entirely by
@@ -882,6 +882,6 @@
           <performance-event pitch="97.9989" start="4.5000" duration="1.4750" dynamics="95"/>
         </performance-part>
       </performance-data>
-    </gmnx>
+    </mnx-generic>
   </score>
 </mnx>
